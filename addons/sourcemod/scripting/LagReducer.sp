@@ -18,8 +18,6 @@ GlobalForward g_gf_OnEndGameFrame;
 
 ConVar g_cv_ProcessRate;
 
-bool g_bLate = false;
-
 bool g_bEnabled = true;
 
 int g_iProcessRate = 0;
@@ -33,8 +31,6 @@ public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max
     g_gf_OnStartGameFrame = CreateGlobalForward("LagReducer_OnStartGameFrame", ET_Ignore);
     g_gf_OnClientGameFrame = CreateGlobalForward("LagReducer_OnClientGameFrame", ET_Ignore, Param_Cell);
     g_gf_OnEndGameFrame = CreateGlobalForward("LagReducer_OnEndGameFrame", ET_Ignore);
-
-    g_bLate = late;
 
     return APLRes_Success;
 }
@@ -79,7 +75,8 @@ public void OnMapEnd()
 
 public void OnRoundEnd(Event hEvent, const char[] sEvent, bool bDontBroadcast)
 {
-	int timeleft = GetMapTimeLeft(timeleft);
+	int timeleft;
+	GetMapTimeLeft(timeleft);
 	if (timeleft <= 0)
 	{
 		g_bEnabled = false;
