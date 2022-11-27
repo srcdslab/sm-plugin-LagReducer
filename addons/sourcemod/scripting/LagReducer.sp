@@ -8,9 +8,8 @@ public Plugin myinfo =
 	name         = "Lag Reducer",
 	author       = "maxime1907",
 	description  = "Adds control over sourcemod callbacks to prevent lags",
-	version      = "1.0"
+	version      = "1.0.0"
 };
-
 
 GlobalForward g_gf_OnClientGameFrame;
 GlobalForward g_gf_OnStartGameFrame;
